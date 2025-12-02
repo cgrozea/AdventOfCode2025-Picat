@@ -1,0 +1,22 @@
+import util.
+import aoc.
+nr0(S,I,N)=X=>X=[1:K in 0..N-1,mod(S+I*K,100)=0].length.
+f(P,I)=X,I>0=>X=nr0(P,1,I).
+f(P,I)=X,I<0=>X=nr0(P,-1,-I).
+main([F])=>A={X[1]:X in rcm(F)},p(A),N={X[1]:X in rim(F)},p(N),
+L:=A.length,
+N:={cond(A[I]=='L',-N[I],N[I]):I in 1..L},
+p(N),
+SN:=0,P:=50,
+AC={0:X in A},
+AP={0:X in A},
+foreach(I in 1..L),
+T:=f(P,N[I]),
+P:=mod(P+N[I],100),
+AC[I]:=T,
+AP[I]:=P,
+end,
+p(ap=AP),
+p(ac=AC),
+p(res=AC.sum)
+.

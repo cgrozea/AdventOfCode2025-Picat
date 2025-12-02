@@ -1,0 +1,15 @@
+import util.
+import aoc.
+main([F])=>A={X[1]:X in rcm(F)},p(A),N={X[1]:X in rim(F)},p(N),
+L:=A.length,
+N:={cond(A[I]=='L',-N[I],N[I]):I in 1..L},
+p(N),
+SN:=0,P:=50,
+AC={0:X in A},
+foreach(I in 1..L),
+P:=mod(P+100+N[I],100),
+AC[I]:=P
+end,
+p(AC),
+p({1:X in AC,X==0}.length)
+.
