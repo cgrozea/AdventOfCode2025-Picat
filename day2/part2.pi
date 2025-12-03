@@ -1,0 +1,16 @@
+import util.
+import aoc.
+% n10(A,E)=X=>K=1+10**E,K2=10**(E-1)-1,X=max(0,div(min(A,K*(K-2)),K)-K2).
+b(E,1)=1+10**E.
+b(E,R)=1+b(E,R-1)*10**E.
+n(A,B,E)=L=>
+K2=10**(E-1)-1,%9
+% L=[(X,K*(10**E-1),K):R in 1..10,K=b(E,R),X in A..min(B,K*(10**E-1)),mod(X,K)=0,div(X,K)>K2].
+L=[X:R in 1..10,K=b(E,R),X in A..min(B,K*(10**E-1)),mod(X,K)=0,div(X,K)>K2].
+n1(A,B)=[X:K in 1..10,X in n(A,B,K)].remove_dups.
+main([F])=>A=rim(F)
+% ,pp({{X[1],X[2],n1(X[1],X[2])}:X in A})
+% ,p([n1(X[1],X[2]):X in A])
+% ,p(n1(222220,222224))
+,p([Y:X in A,Y in n1(X[1],X[2])].remove_dups.sum)
+.

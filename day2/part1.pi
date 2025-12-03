@@ -1,0 +1,12 @@
+import util.
+import aoc.
+% n10(A,E)=X=>K=1+10**E,K2=10**(E-1)-1,X=max(0,div(min(A,K*(K-2)),K)-K2).
+n(A,B,E)=L=>
+K=1+10**E,%101
+K2=10**(E-1)-1,%9
+L=[X:X in A..min(B,K*(K-2)),mod(X,K)=0,div(X,K)>K2].sum.
+n1(A,B)=[n(A,B,K):K in 1..10].sum.
+main([F])=>A=rim(F)
+% ,pp({{X[1],X[2],n1(X[1],X[2])}:X in A})
+,p([n1(X[1],X[2]):X in A].sum)
+.
