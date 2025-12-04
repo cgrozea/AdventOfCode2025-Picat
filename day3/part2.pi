@@ -1,0 +1,13 @@
+import util.
+import aoc.
+
+table(+,+,max)
+mx(L,0,R)=>R=0.
+mx([H|T],K,M)?=>mx(T,K-1,M1),M=10*M1+H.
+mx([_|T],K,M)?=>mx(T,K,M).
+main([F])=>
+B=rcm(F)
+,A={[X.to_int:X in Y]:Y in B}
+,pp(A)
+,p([R:X in A,mx(X.reverse,12,R)].sum)
+.

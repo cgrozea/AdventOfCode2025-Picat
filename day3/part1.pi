@@ -1,0 +1,13 @@
+import util.
+import aoc.
+
+mx(L)=M=>
+N=L.length,
+M=[L[I]*10+L[J]:I in 1..N,J in 1..N,J>I].max.
+
+main([F])=>
+B=rcm(F)
+,A={{X.to_int:X in Y}:Y in B}
+,pp(A)
+,p([mx(X):X in A].sum)
+.
