@@ -1,0 +1,13 @@
+import util.
+import aoc.
+
+n(B,N,I,J)=[1:U in -1..1,V in -1..1,I+U>=1,I+U<=N,J+V>=1,J+V<=N,B[I+U,J+V]='@',abs(U)+abs(V)!=0].sum.
+
+main([F])=>
+B=rcm(F)
+,pp(B)
+,N=B.length
+,p([[R:J in 1..N,R=cond((n(B,N,I,J)<4,B[I,J]='@'),1,0)].sum:I in 1..N].sum)
+% ,pp([[R:J in 1..N,R=cond((n(B,N,I,J)<4,B[I,J]='@'),1,0)]:I in 1..N])
+% ,pp([[R:J in 1..N,R=n(B,N,I,J)]:I in 1..N])
+.
