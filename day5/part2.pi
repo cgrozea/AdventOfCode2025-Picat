@@ -1,0 +1,21 @@
+import util.
+import aoc.
+
+dj([A,B],[C,D])=>B<C;A>D.
+u([A,B],[C,D],R)=>X=min(A,C),Y=max(B,D),R=[X,Y].
+a(I,[],R)=>R=[I].
+a(I,[H|T],R),dj(I,H)=>a(I,T,T2),R=[H|T2].
+a(I,[H|T],T2)=>u(I,H,J),a(J,T,T2).
+b([],L,R)=>R=L.
+b([H|T],L,L3)=>a(H,L,L2),b(T,L2,L3).
+main([F])=>
+B=[A:A in read_file_lines(F)]
+% ,pp(B)
+,R=[X.map(to_int):A in B,member('-',A),X=A.split("-")]
+% ,p(R)
+,b(R,[],R2)
+,p(R2)
+% ,dj([10,14],[3,5])
+% ,p(X)
+,p([X[2]-X[1]+1:X in R2].sum)
+.

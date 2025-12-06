@@ -1,0 +1,15 @@
+import util.
+import aoc.
+
+
+main([F])=>
+B=[A:A in read_file_lines(F)]
+,pp(B)
+,R=[X.map(to_int):A in B,member('-',A),X=A.split("-")]
+,p(R)
+,Q=[X:X in B,X!="",not member('-',X)].map(to_int)
+,p(Q)
+,G=[X:X in Q,[1:[C,D]in R,between(C,D,X)].len>0]
+,p(G)
+,p(G.length)
+.
