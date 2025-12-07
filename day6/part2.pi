@@ -1,0 +1,29 @@
+import util.
+import aoc.
+
+op('+',A)=A.sum.
+op('*',A)=A.prod.
+
+main([F])=>
+A=rcm(F)
+,O=last(A)
+,A:=A[1..A.length-1]
+,p(O)
+,C=[X.length:X in A].max
+,L:=[]
+,S:=0
+,foreach(I in C..-1..1)
+,N:=[cond(I<=len(X),X[I],' '):X in A]
+,N:=[X:X in N,X!=' ']
+,if(N!=[])
+L:=[N.to_int|L]
+end
+,if(I<=O.length,O[I]!=' ')
+R:=op(O[I],L)
+,L:=[]
+,p(R)
+,S:=S+R
+end
+end
+,p(S)
+.

@@ -1,0 +1,15 @@
+import util.
+import aoc.
+
+op('+',A)=A.sum.
+op('*',A)=A.prod.
+
+main([F])=>
+B=[A:A in read_file_lines(F)]
+,[O|E]=B.reverse
+,E:=[X.split.map(to_int):X in E]
+,O:={X:X in O,X!=' '}
+,pp(E)
+,p(O)
+,p([op(O[I],[L[I]:L in E]):I in 1..O.length].sum)
+.
