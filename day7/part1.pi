@@ -1,0 +1,17 @@
+import util.
+import aoc.
+
+table
+t(A,R,C),R>1,A[R-1,C]='S'=>true.
+t(A,R,C),R>1,A[R-1,C]!='^'?=>t(A,R-1,C).
+t(A,R,C),C<A[1].length,A[R,C+1]='^'?=>t(A,R,C+1).
+t(A,R,C),C>1,A[R,C-1]='^'?=>t(A,R,C-1).
+
+main([F])=>
+A=rcm(F)
+,pp(A)
+,N=A[1].length
+,pp([[cond(t(A,I,J),'|','.'):J in 1..N]:I in 1..A.length])
+% ,t(A,1,1)
+,p([1:J in 1..N,I in 1..A.length,A[I,J]='^',t(A,I,J)].sum)
+.
