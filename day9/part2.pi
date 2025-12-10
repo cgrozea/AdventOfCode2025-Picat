@@ -1,0 +1,54 @@
+import util.
+import aoc.
+
+s({A,B},{C,D})=abs((max(A,C)-min(A,C)+1)*(max(B,D)-min(B,D)+1)).
+
+full1(M,AX,BX,AY,BY)=>foreach(X in AX..BX,Y in AY..BY) M[X,Y]==2 end.
+full(M,AX,BX,AY,BY)=>full1(M,min(AX,BX),max(AX,BX)-1,min(AY,BY),max(AY,BY)-1).
+
+main([F])=>
+A=rim(F)
+% ,pp(A)
+% ,p([s(X,Y):X in A,Y in A].max)
+% ,MX=[max(X,Y):{X,Y}in A].max
+% ,p(MX)
+,N=A.length
+,XL=[A[I,1]:I in 1..N].remove_dups.sort
+,YL=[A[I,2]:I in 1..N].remove_dups.sort
+,NX=XL.length
+,NY=YL.length
+,p(NX)
+,p(NY)
+,XM=new_map([XL[I]=I:I in 1..NX])
+,YM=new_map([YL[I]=I:I in 1..NY])
+% ,p(xm=XM)
+% ,p(ym=YM)
+,M=zeros(NX,NY)
+% ,pp(M)
+,L=[[XM.get(A[I,1]),YM.get(A[I,2])]:I in 1..N]
+,L:=L++[L[1]]
+,L:=L.to_array
+% ,p(L)
+,foreach(I in 1..N)
+AX=L[I,1]
+,AY=L[I,2]
+,BX=L[I+1,1]
+,BY=L[I+1,2]
+,if((AY=BY,AX!=BX))
+X1=min(AX,BX)
+,X2=max(AX,BX)-1
+,foreach(Y in 1..NY)
+foreach(X in X1..X2)
+M[X,Y]:=M[X,Y]+sign(Y-(AY-0.5))*sign(BX-AX)
+end
+end
+end
+end
+% ,pp(M)
+% ,p([(I,J,s({XL[AX],YL[AY]},{XL[BX],YL[BY]})):I in 1..N,J in I+1..N,AX=L[I,1],AY=L[I,2],BX=L[J,1],BY=L[J,2],full(M,AX,BX,AY,BY)])
+,p([s({XL[AX],YL[AY]},{XL[BX],YL[BY]}):I in 1..N,J in I+1..N,AX=L[I,1],AY=L[I,2],BX=L[J,1],BY=L[J,2],full(M,AX,BX,AY,BY)].max)
+.
+% real    0m1.330s
+% user    0m1.302s
+% sys     0m0.019s
+

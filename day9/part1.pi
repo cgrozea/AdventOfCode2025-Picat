@@ -1,0 +1,10 @@
+import util.
+import aoc.
+
+s({A,B},{C,D})=abs((A-C+1)*(B-D+1)).
+
+main([F])=>
+A=rim(F)
+,pp(A)
+,p([s(X,Y):X in A,Y in A].max)
+.
