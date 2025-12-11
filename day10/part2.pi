@@ -1,0 +1,26 @@
+import util.
+import aoc.
+import sat.
+
+m(X)=X[2..X.length-1].
+z(X)={0:_ in X}.
+
+e(B,T,A)=>Z=new_array(B.length),Z::0..T.max
+,foreach(I in 1..T.length)
+sum([B[K,I]*Z[K]:K in 1..B.length])#=T[I]
+end
+,A#=sum(Z)
+,solve([$min(A)],[A,Z]),p([a=A,z=Z]).
+
+
+main([F])=>
+A=read_file_lines(F).map(split)
+% ,pp(A)
+,T=[m(X[X.length]).split(",").map(to_int).to_array:X in A].to_array
+% ,pp(T)
+,B=[[m(Z).split(",").map(to_int):Z in Y]:X in A,Y=m(X)].to_array
+,B:=[[{cond(member(X-1,C),1,0):X in 1..T[I].length}:C in B[I]]:I in 1..B.length]
+,pp(B)
+% ,e(B[1],T[1])
+,p([S:I in 1..B.length,e(B[I],T[I],S)].sum)
+.

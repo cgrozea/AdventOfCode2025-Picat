@@ -1,0 +1,36 @@
+import util.
+import aoc.
+
+m(X)=X[2..X.length-1].
+z(X)={0:_ in X}.
+% a(S,B,T)=>
+% p(a=(S,B)),
+% T=S,foreach(B1 in B),
+% p(b=(B1,T)),
+% % T[B1+1]:=1-T[B1+1],
+% p(t=T),
+% end.
+a(S,B,T),B=[]=>T=S.
+a(S,[B1|B],T)=>a(S,B,S2),b(S2,B1,T).
+b(S,B,T)=>T={cond(I=B+1,1-S[I],S[I]):I in 1..S.length}.
+
+
+table(+,+,+,min)
+r(S,T,_,K)?=>T=S,K=0.
+r(S,T,B,K)=>member(B1,B),a(S,B1,S2),r(S2,T,B,K2),K=K2+1.
+
+r2(T,B)=K=>r(z(T),T,B,K).
+
+main([F])=>
+A=read_file_lines(F).map(split)
+% ,pp(A)
+,T=[[cond(Y='.',0,1):Y in m(X[1])].to_array:X in A].to_array
+,pp(T)
+,B=[[m(Z).split(",").map(to_int):Z in Y]:X in A,Y=m(X)].to_array
+,pp(B)
+,p([r2(T[I],B[I]):I in 1..T.length].sum)
+% ,p(r2(T[3],B[3]))
+% ,r({0,0,0,0},T[1],B[1],K),p(K)
+% ,a({0,0,0,0},[3],X),p(X)
+% ,b({0,0,0,0},3,X),p(X)
+.
