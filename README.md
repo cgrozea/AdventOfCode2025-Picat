@@ -6,3 +6,6 @@ Given the nature of AoC, my solutions are not the most elegant, nor the fastest,
 
 Here a link to somebody else solving those with Picat and who spends the
 time to comment his solutions: https://codeberg.org/DestyNova/advent_of_code_2025
+
+Here the [Picat User Guide](https://picat-lang.org/download/picat_guide.pdf)
+that I seem to need daily for those problems.
