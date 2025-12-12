@@ -1,0 +1,29 @@
+import util.
+import aoc.
+
+
+main([F])=>
+A=read_file_lines(F).map(split).map(to_array).to_array
+,A:={{[Z:Z in Y,Z!=':']:Y in X}:X in A}
+,pp(A)
+,V:=[Y:X in A, Y in X].remove_dups
+,p(V)
+% ,p([X.len:X in B].remove_dups)
+,E=new_set([X[1]++X[I]:X in A, I in 2..X.len])
+,p(E)
+,C=new_map([X[1]=[X[I]:I in 2..X.len]:X in A])
+,p(C)
+,H=new_map([X++Y=0:X in V,Y in V])
+,p(H.keys.len)
+,foreach(X in E.keys) H.put(X,1) end
+% ,p(H)
+,K=0,N=V.len
+,foreach(X in V)
+K:=K+1
+,p((K,N))
+,foreach(Y in V,Z in V)
+H.put(Y++Z,H.get(Y++Z)+H.get(Y++X)*H.get(X++Z))
+end
+end
+,p(H.get("youout"))
+.
